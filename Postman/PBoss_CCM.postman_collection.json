@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "b5cfd652-92bb-4255-a675-9466aae63cce",
+		"name": "PBoss_CCM",
+		"description": "All test requests used during development and testing of the PBoss CCM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Environment",
+			"item": [
+				{
+					"name": "TestSvc - Check Up",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8899/service-instances/pboss-ccm-test-svc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8899",
+							"path": [
+								"service-instances",
+								"pboss-ccm-test-svc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EdgeTestSvc - Check Up",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/edgetest/service-instances/pboss-ccm-test-svc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"edgetest",
+								"service-instances",
+								"pboss-ccm-test-svc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1bc25ce1-5015-418e-8cfa-00bf82e8e924",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "01095b39-fcca-4ccc-9daf-0aeec916d190",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
