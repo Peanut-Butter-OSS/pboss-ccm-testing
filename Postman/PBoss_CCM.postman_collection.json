@@ -79,6 +79,68 @@
 			"name": "OnDemandRequestSvc",
 			"item": [
 				{
+					"name": "Submit_SanityTest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"req_header\" : {\n    \"request_timestamp\" : \"2019-11-19T14:50:06+02\",\n    \"api_version\" : \"0.1\",\n    \"corr_id\" : \"COR1\",\n    \"test_level\" : 1,\n    \"api_credentials\" : {\n      \"account_name\" : \"Test Account\",\n      \"api_key\" : \"XXXKEYZZZ\"\n    }\n  },\n  \"cic\" : {\n    \"cic_date_time\" : \"2019-11-19T14:50:06+02\",\n    \"cic_type_code\" : \"CICTYPE1\",\n    \"cic_part_list\" : [ {\n      \"creation_type\" : \"rendered_cic_part\",\n      \"cic_part_type_code\" : \"PT1\",\n      \"file_name\" : \"FileName1.txt\",\n      \"part_id\" : \"1\",\n      \"description\" : \"RENDERED :: FREEMARKER XML CONFIGURED TEMPLATE\",\n      \"render_spec\" : {\n        \"render_type\" : \"freemarker_render_spec\",\n        \"render_payload\" : \"<letter><name>Greg</name><surname>Fullard</surname></letter>\",\n        \"payload_type\" : \"XML\"\n      }\n    } ],\n    \"store_spec_list\" : [ {\n      \"store_spec_type\" : \"linux_fs_store_spec\",\n      \"part_id\" : \"1\",\n      \"file_path\" : \"/home/gregf/test.pdf\",\n      \"make_unique\" : false,\n      \"overwrite\" : true\n    } ],\n    \"deliver_spec_list\" : [ {\n      \"deliver_type\" : \"sms_deliver_spec\",\n      \"mobile_number\" : \"1234567890\",\n      \"part_id_sms_body\" : \"1\"\n    } ]\n  }\n}"
+						},
+						"url": {
+							"raw": "localhost:7777/api/on-demand-cics/submit",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"api",
+								"on-demand-cics",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit_FailTest_GuidSupplied",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"req_header\" : {\n    \"request_timestamp\" : \"2019-11-19T14:50:06+02\",\n    \"api_version\" : \"0.1\",\n    \"corr_id\" : \"COR1\",\n    \"test_level\" : 1,\n    \"api_credentials\" : {\n      \"account_name\" : \"Test Account\",\n      \"api_key\" : \"XXXKEYZZZ\"\n    }\n  },\n  \"req_guid\" : \"GUID\",\n  \"cic\" : {\n    \"cic_date_time\" : \"2019-11-19T14:50:06+02\",\n    \"cic_type_code\" : \"CICTYPE1\",\n    \"cic_part_list\" : [ {\n      \"creation_type\" : \"rendered_cic_part\",\n      \"cic_part_type_code\" : \"PT1\",\n      \"file_name\" : \"FileName1.txt\",\n      \"part_id\" : \"1\",\n      \"description\" : \"RENDERED :: FREEMARKER XML CONFIGURED TEMPLATE\",\n      \"render_spec\" : {\n        \"render_type\" : \"freemarker_render_spec\",\n        \"render_payload\" : \"<letter><name>Greg</name><surname>Fullard</surname></letter>\",\n        \"payload_type\" : \"XML\"\n      }\n    } ],\n    \"store_spec_list\" : [ {\n      \"store_spec_type\" : \"linux_fs_store_spec\",\n      \"part_id\" : \"1\",\n      \"file_path\" : \"/home/gregf/test.pdf\",\n      \"make_unique\" : false,\n      \"overwrite\" : true\n    } ],\n    \"deliver_spec_list\" : [ {\n      \"deliver_type\" : \"sms_deliver_spec\",\n      \"mobile_number\" : \"1234567890\",\n      \"part_id_sms_body\" : \"1\"\n    } ]\n  }\n}"
+						},
+						"url": {
+							"raw": "localhost:7777/api/on-demand-cics/submit",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"api",
+								"on-demand-cics",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Submit",
 					"request": {
 						"method": "POST",
@@ -148,36 +210,6 @@
 						},
 						"url": {
 							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Submit_Simple",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"req_header\" : {\n    \"api_credentials\" : {\n      \"account_name\" : \"Test Account\",\n      \"api_key\" : \"XXXKEYZZZ\"\n    }\n  },\n  \"cic\" : {\n    \"cic_type_code\" : \"CICTYPE1\",\n    \"cic_part_list\" : [ {\n\t\"creation_type\": \"rendered_cic_part\",\n\t\"cic_part_type_code\": \"PT2\",\n\t\"file_name\": \"Body.txt\",\n\t\"part_id\": \"1\",\n\t\"description\": \"Mail Body\",\n\t\"render_spec\": {\n\t\t\"render_type\": \"freemarker_render_spec\",\n\t\t\"render_payload\": \"{ \\\"application\\\": { \\\"type\\\": \\\"Loan\\\", \\\"amount\\\": \\\"20.00\\\", \\\"applicant\\\": { \\\"name\\\": \\\"Gregory Alan\\\",\\\"surname\\\": \\\"Fullard\\\" } }}\",\n\t\t\"payload_type\": \"JSON\"\n\t}\n}, {\n\t\"creation_type\": \"rendered_cic_part\",\n\t\"cic_part_type_code\": \"PT4\",\n\t\"file_name\": \"Subject.txt\",\n\t\"part_id\": \"2\",\n\t\"description\": \"Mail Subject\",\n\t\"render_spec\": {\n        \"render_type\" : \"freemarker_render_spec\",\n        \"render_payload\" : \"<letter><name>Greg</name><surname>Fullard</surname></letter>\",\n        \"payload_type\": \"XML\"\n\t}\n} ],     \n    \"deliver_spec_list\" : [ {\n      \"deliver_type\" : \"email_deliver_spec\",\n      \"contact_id\" : \"12345\",\n      \"contact_type\" : \"INDIVIDUAL\",\n      \"from_address\" : \"testfrom@test.com\",\n      \"to_address\" : \"gregf@8bitplatoon.com\",\n      \"part_id_subject\" : \"2\",\n      \"part_id_body\" : \"1\"\n    } ]\n  }\n}\n"
-						},
-						"url": {
-							"raw": "localhost:7777/on-demand-cics/submit",
-							"host": [
-								"localhost"
-							],
-							"port": "7777",
-							"path": [
-								"on-demand-cics",
-								"submit"
-							]
 						}
 					},
 					"response": []
